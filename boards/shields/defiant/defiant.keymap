@@ -1,6 +1,12 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>#
+
+#define DEF 0
+#define SYM 1
+#define NUM 2
+#define NAV 3
 
 / {
 
@@ -9,10 +15,38 @@ keymap {
 
     default_layer {
         bindings = <
-         &kp Q    &kp W     &kp E     &kp R     &kp T                             &kp Y     &kp U     &kp I     &kp O     &kp P    
-         &kp A    &kp S     &kp D     &kp F     &kp G      &kp LGUI    &kp RCTRL  &kp H     &kp J     &kp K     &kp L     &kp SEMI 
-         &kp Z    &kp X     &kp C     &kp V     &kp B 	   &kp LCTRL   &kp RALT   &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH 
-                  &kp LGUI  &kp DEL   &kp TAB   &kp SPACE  &kp LSHIFT  &kp RSHIFT &kp RET   &kp BSPC  &kp ESC   &kp RALT
+         &kp Q    &kp W     &kp E     &kp R     &kp T                             &kp Y     &kp U     &kp I     &kp O     &kp P
+         &kp A    &kp S     &kp D     &mt LSHIFT F     &kp G      &kp LGUI    &kp RCTRL  &kp H     &mt RSHIFT J     &kp K     &kp L     &kp SEMI
+         &kp Z    &kp X     &kp C     &kp V     &kp B 	   &kp LCTRL   &kp RALT   &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH
+                  &kp LGUI  &kp DEL   &kp TAB   &lt NAV SPACE  &sl SYM  &sl SYM &lt NUM RET   &kp BSPC  &kp ESC   &kp RALT
+        >;
+    };
+
+    symbol_layer {
+        bindings = <
+        &kp STAR  &kp HASH  &kp LBKT &kp RBKT  &kp DOLLAR                        &kp PRCNT &kp GT    &kp LT    &kp EQUAL &kp RBKT    
+        &kp COLON &kp UNDER &kp LPAR &kp DQT   &kp FSLH  &kp  LGUI    &kp  RCTRL &kp AMPS  &kp SQT   &kp LBRC  &kp MINUS &kp SEMI 
+        &kp TILDE &kp AT    &kp RPAR &kp QMARK &kp BSLH  &kp  LCTRL   &kp  RALT  &kp PIPE  &kp EXCL  &kp RBRC  &kp CARET &kp GRAVE 
+                  &kp LGUI  &kp DEL  &kp TAB   &kp SPACE &sl  SYM     &sl  SYM   &kp RET   &kp BSPC  &kp ESC   &kp RGUI
+        >;
+    };
+
+    number_layer {
+        bindings = <
+        &kp STAR  &kp N7    &kp N8    &kp N9    &kp PLUS                          &kp PRCNT &kp GT    &kp LT    &kp EQUAL &kp RBKT    
+        &kp N0    &kp N4    &kp N5    &kp N6    &kp DOT &kp  PRCNT &kp  RCTRL &kp FSLH  &mt RSHFT EQUAL &mt RGUI PLUS &mt RALT MINUS &mt RCTRL STAR 
+        &kp FSLH  &kp N1    &kp N2    &kp N3    &kp MINUS &kp  EQUAL   &kp  RALT  &kp DLLR  &kp LPAR  &kp RPAR  &kp DOT   &kp COMMA 
+                  &kp LGUI  &kp DEL   &kp TAB   &kp SPACE &sl  SYM     &sl  SYM   &kp RET   &kp BSPC  &to DEF   &kp RGUI
+        >;
+
+    };
+
+    navigation_layer {
+        bindings = <
+        &out OUT_TOG &bt BT_CLR &bt BT_PRV &bt BT_NXT   &kp B                           &kp C_PP &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT    
+        &kp LCTRL &kp LALT  &kp LGUI  &kp LSHIFT &kp ESC &kp LGUI   &kp RCTRL   &kp ESC   &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT 
+        &kp COMMA &kp X     &kp C     &kp D   &kp V 	 &kp LCTRL  &kp RALT    &kp INS   &kp HOME  &kp PG_DN &kp PG_UP &kp END 
+                  &kp LGUI  &kp DEL   &kp TAB &kp SPACE  &sl SYM    &sl SYM   &lt NUM RET &kp BSPC  &to DEF   &kp RALT
         >;
     };
 };
